@@ -29,7 +29,7 @@ export function AdminRoom(){
 
   async function HandleEndRoom(){
     await database.ref(`rooms/${roomId}`).update({
-      closedAt: new Date(),
+      endedAt: new Date(),
     })
 
     history.push('/');

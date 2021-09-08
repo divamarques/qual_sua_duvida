@@ -10,6 +10,7 @@ import logoImg from '../assets/images/logo.svg';
 import googleIconImg from '../assets/images/google-icon.svg';
 
 import '../styles/auth.scss';
+import toast from 'react-hot-toast';
 
 export function Home(){
   // hook responsável por:
@@ -39,12 +40,12 @@ export function Home(){
     const roomRef = await database.ref(`rooms/${roomCode}`).get();
 
     if (!roomRef.exists()) {
-      alert('Room does not exist');
+      toast.error('Room does not exist');
       return;
     }
 
-    if(roomRef.val().closedAt){
-      alert('Room is closed!');
+    if(roomRef.val().endedAt){
+      toast.error('Room is closed!');
       return;
     }
 
